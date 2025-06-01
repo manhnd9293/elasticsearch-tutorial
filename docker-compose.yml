@@ -1,0 +1,15 @@
+services:
+  db:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.0.0
+    container_name: elasticsearch
+    ports:
+      - 9200:9200
+    environment:
+      "discovery.type": single-node
+      "xpack.security.enabled": false
+      "xpack.license.self_generated.type": basic
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+
+volumes:
+  elasticsearch-data:
